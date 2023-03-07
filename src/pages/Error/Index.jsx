@@ -4,7 +4,7 @@ import { Card, CardBody, Code, Heading } from "@chakra-ui/react";
 
 import { useRouteError } from "react-router-dom";
 
-export const ErrorPage = () => {
+export const Error = () => {
   const error = useRouteError();
   return (
     <ErrorLayout pageTitle={error.message}>

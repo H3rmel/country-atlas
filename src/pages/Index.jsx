@@ -1,5 +1,6 @@
 export { About } from "./About";
 export { Country } from "./Country";
-export { ErrorPage } from "./ErrorPage";
+export { Error } from "./Error";
 export { Home } from "./Home";
 export { NotFound } from "./NotFound";
+

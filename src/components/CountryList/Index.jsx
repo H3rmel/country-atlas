@@ -1,6 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 
-import { CountryItem } from "./CountryItem";
+import { CountryItem } from "../CountryItem/Index";
 
 export const CountryList = ({ countries }) => {
   return (
