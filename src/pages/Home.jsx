@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 
 import { MainLayout } from "@/layouts/MainLayout";
 
-import { LoaderIf } from "@/components/LoaderIf";
+import { CountryList, LoaderIf } from "@/components";
 
 import {
-  Card, Flex,
-  Grid,
-  GridItem, Input,
+  Flex,
+  Input,
   InputGroup,
   InputLeftElement,
   Select
@@ -15,7 +14,7 @@ import {
 
 import { MagnifyingGlass } from "phosphor-react";
 
-import { getAllCountries } from "../services/countries";
+import { getAllCountries } from "@/services/countries";
 
 import { regions } from "@/config/regions.json";
 
@@ -29,7 +28,12 @@ export const Home = () => {
   return (
     <MainLayout pageTitle="Home">
       <LoaderIf condition={countries === null}>
-        <Flex alignItems="center" gap={4}>
+        <Flex
+          alignItems="center"
+          flexDirection={{ base: "column", md: "row" }}
+          gap={4}
+          mb={4}
+        >
           <InputGroup size="lg" flexBasis="75%">
             <InputLeftElement>
               <MagnifyingGlass size={24} />
@@ -44,13 +48,7 @@ export const Home = () => {
             ))}
           </Select>
         </Flex>
-        <Grid templateRows="repeat(4, 1fr)" gap={6}>
-          <GridItem rowSpan={2}>
-            {countries.map((country) => (
-              <Card>{country.name.common}</Card>
-            ))}
-          </GridItem>
-        </Grid>
+        <CountryList countries={countries} />
       </LoaderIf>
     </MainLayout>
   );
