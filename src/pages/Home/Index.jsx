@@ -61,7 +61,6 @@ export const Home = () => {
             ))}
           </Select>
         </Flex>
-        {/* Virtualizar a lista */}
         <CountryList countries={countries} />
       </LoaderIf>
     </MainLayout>
