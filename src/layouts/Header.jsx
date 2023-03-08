@@ -31,7 +31,7 @@ export const Header = () => {
   const bg = useColorModeValue("white", "gray.900");
   const logo = useColorModeValue("/logo-light.svg", "/logo-dark.svg");
   return (
-    <Box bg={bg} color={color} shadow="base">
+    <Box bg={bg} color={color} shadow="base" position="sticky" top={0} zIndex={999}>
       <Flex
         width={{ base: "full", md: "app" }}
         py="4"

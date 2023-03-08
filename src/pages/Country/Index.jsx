@@ -2,19 +2,22 @@ import { useEffect, useState } from "react";
 
 import { MainLayout } from "@/layouts/MainLayout";
 
-import { LoaderIf } from "@/components";
+import { CountryInfo, LoaderIf } from "@/components";
 
-import { Center, useToast } from "@chakra-ui/react";
+import { Button, Flex, Image, useToast } from "@chakra-ui/react";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { getSpecificCountryByName } from "@/services/countries";
+
+import { ArrowLeft } from "phosphor-react";
 
 export const Country = () => {
   const [country, setCountry] = useState({});
   const [loading, setLoading] = useState(true);
 
   const { name } = useParams();
+  const navigate = useNavigate();
 
   const toast = useToast();
 
@@ -24,7 +27,7 @@ export const Country = () => {
 
   const getCountry = async () => {
     try {
-      getSpecificCountryByName(name, setCountry);
+      await getSpecificCountryByName(name, setCountry);
       setLoading(false);
     } catch (error) {
       toast({
@@ -37,29 +40,34 @@ export const Country = () => {
     }
   };
 
+  const handleReturn = () => navigate("/", { replace: true });
+
   return (
     <MainLayout pageTitle={name}>
       <LoaderIf condition={loading}>
-        {country.ccn3}
-        <Center w="50%">
-          {/* <Image
-            src={country.flags.svg}
-            boxSize={256}
-            alt={country.flags.alt}
-          /> */}
-        </Center>
-        <Center w="50%">{country.startOfWeek}</Center>
-      </LoaderIf>
-      {/* <LoaderIf condition={loading}>
-        <Center w="50%">
+        <Button onClick={handleReturn}>
+          <ArrowLeft size={20} /> Voltar para Home
+        </Button>
+        <Flex
+          flexDirection={{ base: "column", "2xl": "row" }}
+          justifyContent="space-between"
+          alignItems={{
+            base: "flex-start",
+            md: "center",
+            lg: "flex-start",
+            xl: "center",
+          }}
+          mt={{ base: 4, md: 16}}
+        >
           <Image
-            src={country.flags.svg}
-            boxSize={256}
-            alt={country.flags.alt}
+            src={country?.flags?.svg}
+            alt={country?.flags?.alt}
+            w={{ lg: "100%", xl: "xl" }}
+            borderRadius="2xl"
           />
-        </Center>
-        <Center w="50%"></Center>
-      </LoaderIf> */}
+          <CountryInfo country={country} />
+        </Flex>
+      </LoaderIf>
     </MainLayout>
   );
 };
