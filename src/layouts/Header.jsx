@@ -28,7 +28,7 @@ export const Header = () => {
   const btnRef = useRef();
 
   const color = useColorModeValue("gray.800", "gray.200");
-  const bg = useColorModeValue("gray.100", "gray.900");
+  const bg = useColorModeValue("white", "gray.900");
   const logo = useColorModeValue("/logo-light.svg", "/logo-dark.svg");
   return (
     <Box bg={bg} color={color} shadow="base">

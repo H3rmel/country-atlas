@@ -8,4 +8,7 @@ export const theme = extendTheme({
   sizes: {
     app: "min(100% - 2rem, 75vw)",
   },
+  shadows: {
+    hover: `0 0 0 4px #4299E1`,
+  },
 });

@@ -9,7 +9,8 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  Select
+  Select,
+  useToast
 } from "@chakra-ui/react";
 
 import { MagnifyingGlass } from "phosphor-react";
@@ -21,13 +22,25 @@ import { regions } from "@/config/regions.json";
 export const Home = () => {
   const [countries, setCountries] = useState([]);
 
+  const toast = useToast();
+
   useEffect(() => {
-    getAllCountries(setCountries);
+    try {
+      getAllCountries(setCountries);
+    } catch (error) {
+      toast({
+        title: "Erro",
+        description: error,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   }, []);
 
   return (
     <MainLayout pageTitle="Home">
-      <LoaderIf condition={countries === null}>
+      <LoaderIf condition={countries.length === 0}>
         <Flex
           alignItems="center"
           flexDirection={{ base: "column", md: "row" }}

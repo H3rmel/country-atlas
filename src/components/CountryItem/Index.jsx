@@ -18,8 +18,8 @@ import { Buildings, GlobeHemisphereEast, UsersThree } from "phosphor-react";
 export const CountryItem = ({ country }) => {
   return (
     <GridItem>
-      <Link to={`/country/${country.cca2}`}>
-        <Card p={4}>
+      <Link to={`/country/${country.name.common}`}>
+        <Card p={4} transition="300ms" _hover={{ boxShadow: "hover" }}>
           <CardHeader
             w="100%"
             h="192px"
@@ -30,8 +30,16 @@ export const CountryItem = ({ country }) => {
             backgroundSize="cover"
           />
           <CardBody p={0}>
-            <Stack mt={2} spacing={2}>
-              <Heading size="md">{country.name.common}</Heading>
+            <Stack mt={2} spacing={2} px={2} py={4}>
+              <Heading
+                size="md"
+                whiteSpace="nowrap"
+                overflow="hidden"
+                textOverflow="ellipsis"
+                maxW="20ch"
+              >
+                {country.name.common}
+              </Heading>
               <List spacing={2}>
                 <ListItem display="flex" gap={2} alignItems="center">
                   <Tooltip label="População" placement="top">
@@ -39,7 +47,7 @@ export const CountryItem = ({ country }) => {
                       <UsersThree size={20} />
                     </Badge>
                   </Tooltip>
-                  {country.population}
+                  {country.population.toLocaleString("pt-BR")}
                 </ListItem>
                 <ListItem display="flex" gap={2} alignItems="center">
                   <Tooltip label="Região" placement="top">

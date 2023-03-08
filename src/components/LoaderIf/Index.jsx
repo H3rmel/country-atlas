@@ -5,7 +5,13 @@ export const LoaderIf = ({ condition, children }) => {
     <>
       {condition ? (
         <Center>
-          <Spinner size="md" />
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
         </Center>
       ) : (
         children

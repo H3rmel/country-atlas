@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import {
   Button,
@@ -16,26 +16,28 @@ import { ArrowCounterClockwise } from "phosphor-react";
 export const ErrorLayout = ({ children, pageTitle }) => {
   const color = useColorModeValue("gray.800", "gray.200");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.title = `${pageTitle} | Country Atlas`;
   });
+
+  const handleReturn = () => navigate("/", { replace: true });
   return (
-    <Center w="full" h="100vh" bg={!color} color={color}>
+    <Center w="app" h="100vh" mx="auto" bg={!color} color={color}>
       <Stack direction="column" align="center">
         {children}
         <Stack direction="row">
-          <Link to="/">
-            <Button colorScheme="red">Voltar para Home</Button>
-          </Link>
-          <Link>
-            <Tooltip label="Reiniciar página" placement="right">
-              <IconButton
-                colorScheme="red"
-                aria-label="Refresh page"
-                icon={<ArrowCounterClockwise size={24} />}
-              />
-            </Tooltip>
-          </Link>
+          <Button colorScheme="red" onClick={handleReturn}>
+            Voltar para Home
+          </Button>
+          <Tooltip label="Reiniciar página" placement="right">
+            <IconButton
+              colorScheme="red"
+              aria-label="Refresh page"
+              icon={<ArrowCounterClockwise size={24} />}
+            />
+          </Tooltip>
         </Stack>
       </Stack>
     </Center>
