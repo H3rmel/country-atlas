@@ -38,6 +38,7 @@ export const Country = () => {
   };
 
   return (
+    /* Ver oqeu ta rolando com o Iury e na Ekerdev */
     <MainLayout pageTitle={name}>
       <LoaderIf condition={loading}>
         {country.ccn3}
@@ -50,16 +51,6 @@ export const Country = () => {
         </Center>
         <Center w="50%">{country.startOfWeek}</Center>
       </LoaderIf>
-      {/* <LoaderIf condition={loading}>
-        <Center w="50%">
-          <Image
-            src={country.flags.svg}
-            boxSize={256}
-            alt={country.flags.alt}
-          />
-        </Center>
-        <Center w="50%"></Center>
-      </LoaderIf> */}
     </MainLayout>
   );
 };
