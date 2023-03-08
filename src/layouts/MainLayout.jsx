@@ -1,27 +1,24 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 
 import { Header } from "./Header";
 
-import { Box } from "@chakra-ui/react";
-
-import { ColorModeContext, ColorModeProvider } from "@/contexts/colormode";
+import { Box, useColorModeValue } from "@chakra-ui/react";
 
 export const MainLayout = ({ children, pageTitle }) => {
-  const { layoutColor, layoutBg } = useContext(ColorModeContext);
+  const color = useColorModeValue("gray.800", "gray.200");
+  const bg = useColorModeValue("gray.200", "gray.800");
 
   useEffect(() => {
     document.title = `${pageTitle} | Country Atlas`;
   }, []);
 
   return (
-    <ColorModeProvider>
-      <Box w="full" h="100vh" bg={layoutBg} color={layoutColor}>
-        <Header />
-        <Box width="app" mx="auto" my="4">
-          {/* Breadcrumbs here later */}
-          {children}
-        </Box>
+    <Box w="full" h="100vh" bg={bg} color={color}>
+      <Header />
+      <Box width="app" mx="auto" my="4">
+        {/* Breadcrumbs here later */}
+        {children}
       </Box>
-    </ColorModeProvider>
+    </Box>
   );
 };
