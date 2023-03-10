@@ -17,7 +17,6 @@ O projeto se encontra hospedado na [Vercel](https://vercel.com), no seguinte lin
 - React
 - React Router 
 - Axios
-- i18next
 - ChakraUI
 - ViteJS
 
