@@ -17,10 +17,7 @@ export const MainLayout = ({ children, pageTitle }) => {
   return (
     <Box sx={appSx} bg={bg} color={color}>
       <Header />
-      <Box sx={boxSx}>
-        {/* Breadcrumbs here later */}
-        {children}
-      </Box>
+      <Box sx={boxSx}>{children}</Box>
     </Box>
   );
 };

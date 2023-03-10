@@ -1,5 +1,5 @@
 export const stackSx = {
-  w: { md: "full", lg: "1/2" },
+  w: { xl: "full", "2xl": "50%" },
   mx: { base: 0, md: "auto", lg: 0 },
   mt: 4,
 };

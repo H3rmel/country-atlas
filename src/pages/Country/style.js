@@ -12,7 +12,6 @@ export const flexSx = {
     base: 4,
     md: 16,
   },
-  gap: { base: 0, "2xl": 4 },
 };
 
 export const imgSx = {

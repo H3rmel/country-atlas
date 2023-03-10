@@ -1,21 +1,21 @@
-import { Grid } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 
 import { CountryItem } from "../CountryItem/Index";
 
 export const CountryGrid = ({ countries }) => {
   return (
-    <Grid
-      templateColumns={{
-        base: "repeat(1, 1fr)",
-        md: "repeat(2, 1fr)",
-        xl: "repeat(3, 1fr)",
-        "2xl": "repeat(4, 1fr)",
+    <SimpleGrid
+      columns={{
+        base: 1,
+        md: 2,
+        xl: 3,
+        "2xl": 4,
       }}
       gap={6}
     >
       {countries.map((country, index) => (
         <CountryItem key={index} country={country} />
       ))}
-    </Grid>
+    </SimpleGrid>
   );
 };

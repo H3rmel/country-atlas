@@ -1,6 +1,5 @@
 import { Code, Heading, List, ListItem, Stack, Text } from "@chakra-ui/react";
 
-
 import { stackSx } from "./style";
 
 export const CountryInfo = ({ country }) => {
@@ -14,7 +13,7 @@ export const CountryInfo = ({ country }) => {
         <List spacing={4}>
           <ListItem>
             <Text as="strong">Nome nativo:</Text>{" "}
-            {/* {country?.name?.nativeName?.} */}
+            {Object.values(country.name.nativeName)[0].common}
           </ListItem>
           <ListItem>
             <Text as="strong">População:</Text>{" "}
