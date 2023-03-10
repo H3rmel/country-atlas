@@ -1,5 +1,5 @@
 export const appSx = {
-  w: "100%",
+  w: "full",
   h: "100vh",
   overflowY: "auto",
 };

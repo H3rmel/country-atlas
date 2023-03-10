@@ -12,12 +12,13 @@ export const flexSx = {
     base: 4,
     md: 16,
   },
+  gap: { base: 0, "2xl": 4 },
 };
 
 export const imgSx = {
   w: {
     lg: "100%",
-    xl: "2xl",
+    "2xl": "2xl",
   },
   borderRadius: "2xl",
 };

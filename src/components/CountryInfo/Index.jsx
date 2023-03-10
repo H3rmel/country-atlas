@@ -1,13 +1,11 @@
 import { Code, Heading, List, ListItem, Stack, Text } from "@chakra-ui/react";
 
+
+import { stackSx } from "./style";
+
 export const CountryInfo = ({ country }) => {
   return (
-    <Stack
-      w="50%"
-      mx={{ base: 0, md: "auto", lg: 0 }}
-      mt={4}
-      spacing={{ base: 4, md: 8 }}
-    >
+    <Stack sx={stackSx} spacing={{ base: 4, md: 8 }}>
       <Heading size="lg">{country?.name?.common}</Heading>
       <Stack
         direction={{ base: "column", md: "row" }}
@@ -34,7 +32,7 @@ export const CountryInfo = ({ country }) => {
             <Text as="strong">Capital:</Text> {country?.capital}
           </ListItem>
           <ListItem>
-            <Text as="strong">Top Level Domain:</Text>
+            <Text as="strong">Top Level Domain:</Text>{" "}
             <Code>{country?.tld}</Code>
           </ListItem>
           <ListItem>

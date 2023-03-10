@@ -7,7 +7,7 @@ export const cardSx = {
 };
 
 export const cardHeaderSx = {
-  w: "100%",
+  w: "full",
   h: "192px",
   p: 4,
   borderRadius: "lg",
