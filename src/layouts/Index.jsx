@@ -1,3 +1,3 @@
-export { ErrorLayout } from "./Error";
-export { MainLayout } from "./Main";
+export { ErrorLayout } from "./Error/Index";
+export { MainLayout } from "./Main/Index";
 
