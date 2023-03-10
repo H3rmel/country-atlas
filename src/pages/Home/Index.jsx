@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { CountryForm, CountryGrid, LoaderIf } from "@/components";
+import { CountryForm, CountryGrid, LoaderIf } from "@/components/Index";
 
 import { MainLayout } from "@/layouts/Main/Index";
 
