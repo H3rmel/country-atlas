@@ -36,10 +36,19 @@ export const CountryForm = ({ countries, setFilter }) => {
 
   const handleFilter = () => {
     const filteredCountries = countries.filter((country) => {
-      let countryName = country.name.common.toLowerCase();
-      let searchName = searchQuery.name.toLowerCase();
+      if (
+        !country.region.toLowerCase().includes(searchQuery.region.toLowerCase())
+      )
+        return;
 
-      return countryName.includes(searchName);
+      if (
+        !country.name.common
+          .toLowerCase()
+          .includes(searchQuery.name.toLowerCase())
+      )
+        return;
+
+      return country;
     });
 
     setFilter(filteredCountries);

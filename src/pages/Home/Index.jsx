@@ -34,7 +34,6 @@ export const Home = () => {
     }
   };
 
-  console.log(filteredCountries);
   return (
     <MainLayout pageTitle="Home">
       <LoaderIf condition={countries.length === 0}>

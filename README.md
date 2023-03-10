@@ -5,11 +5,8 @@ O Country Atlas é um projeto realizado independente por mim para aprender mais 
 ## Features 💻
 
 - [x] Consultar todos os países na tela principal;
-- [ ] Consultar informações de cada país de forma individual;
+- [x] Consultar informações de cada país de forma individual;
 - [x] Darkmode;
-- [ ] Internacionalização:
-  - [ ] Português;
-  - [ ] Inglês;
 
 ## Hospedagem 🏨
 

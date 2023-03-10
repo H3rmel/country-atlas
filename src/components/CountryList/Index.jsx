@@ -13,7 +13,6 @@ export const CountryList = ({ countries }) => {
       }}
       gap={6}
     >
-      {/* Virtualize this shit */}
       {countries.map((country, index) => (
         <CountryItem key={index} country={country} />
       ))}

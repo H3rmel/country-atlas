@@ -13,7 +13,7 @@ export const CountryInfo = ({ country }) => {
         direction={{ base: "column", md: "row" }}
         spacing={{ base: 0, md: 32 }}
       >
-        <List lineHeight={2.4}>
+        <List spacing={4}>
           <ListItem>
             <Text as="strong">Nome nativo:</Text>{" "}
             {/* {country?.name?.nativeName?.} */}
@@ -29,7 +29,7 @@ export const CountryInfo = ({ country }) => {
             <Text as="strong">Sub-região:</Text> {country?.subregion}
           </ListItem>
         </List>
-        <List lineHeight={2.4}>
+        <List spacing={4}>
           <ListItem>
             <Text as="strong">Capital:</Text> {country?.capital}
           </ListItem>

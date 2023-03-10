@@ -9,12 +9,11 @@ export const getAllCountries = async () => {
   }
 };
 
-export const getSpecificCountryByName = async (name, setData) => {
+export const getSpecificCountryByName = async (name) => {
   try {
     const response = await api.get(`name/${name}`);
 
-    const dataObj = response.data[0];
-    setData(dataObj);
+    return response.data[0];
   } catch (error) {
     throw error;
   }
