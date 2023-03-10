@@ -1,8 +1,64 @@
-import { Code, Heading, List, ListItem, Stack, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+
+import {
+  Button,
+  Code,
+  Heading,
+  List,
+  ListItem,
+  Stack,
+  Text,
+  useToast,
+  Wrap,
+  WrapItem
+} from "@chakra-ui/react";
+
+import { Link, redirect } from "react-router-dom";
+
+import { getCountriesByCodes } from "@/api/countries";
 
 import { stackSx } from "./style";
 
 export const CountryInfo = ({ country }) => {
+  const [borderCountries, setBorderCountries] = useState([]);
+
+  const toast = useToast();
+
+  useEffect(() => {
+    returnBorderCountries();
+  }, []);
+
+  const returnBorderCountries = async () => {
+    try {
+      const response = await getCountriesByCodes(country.borders);
+
+      setBorderCountries(response);
+    } catch (error) {
+      toast({
+        title: "Erro",
+        description: error,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
+
+  const redirectToBorderCountry = (borderCountry) => {
+    try {
+      redirect(`/country/${borderCountry}`);
+      window.location.reload();
+    } catch (error) {
+      toast({
+        title: "Erro",
+        description: error,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
+
   return (
     <Stack sx={stackSx} spacing={{ base: 4, md: 8 }}>
       <Heading size="lg">{country?.name?.common}</Heading>
@@ -52,12 +108,23 @@ export const CountryInfo = ({ country }) => {
           </ListItem>
         </List>
       </Stack>
-      {/* Will need special attention */}
-      {/* <Stack>
-              <Text as="strong">
-                Países de borda:
-              </Text>
-            </Stack> */}
+      <Stack>
+        <Text as="strong">Países de borda:</Text>
+        <Wrap>
+          {borderCountries.map((borderCountry, index) => (
+            <WrapItem key={index}>
+              <Link
+                to={`/country/${borderCountry}`}
+                onClick={() => redirectToBorderCountry(borderCountry)}
+              >
+                <Button variant="outline" size="sm">
+                  {borderCountry}
+                </Button>
+              </Link>
+            </WrapItem>
+          ))}
+        </Wrap>
+      </Stack>
     </Stack>
   );
 };
