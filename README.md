@@ -12,6 +12,8 @@ O Country Atlas é um projeto realizado independente por mim para aprender mais 
 
 O projeto se encontra hospedado na [Vercel](https://vercel.com), no seguinte link:
 
+[Home | Country Atlas](https://country-atlas.vercel.app/)
+
 ## Tecnologias 🛠️
 
 - React
