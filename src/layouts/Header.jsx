@@ -17,6 +17,7 @@ import {
   Flex,
   IconButton,
   Image,
+  Link,
   Stack,
   useColorModeValue,
   useDisclosure
@@ -31,7 +32,14 @@ export const Header = () => {
   const bg = useColorModeValue("white", "gray.900");
   const logo = useColorModeValue("/logo-light.svg", "/logo-dark.svg");
   return (
-    <Box bg={bg} color={color} shadow="base" position="sticky" top={0} zIndex={999}>
+    <Box
+      bg={bg}
+      color={color}
+      shadow="base"
+      position="sticky"
+      top={0}
+      zIndex={999}
+    >
       <Flex
         width={{ base: "full", md: "app" }}
         py="4"
@@ -51,9 +59,9 @@ export const Header = () => {
           <NavLink to="/">
             <Button variant="ghost">Home</Button>
           </NavLink>
-          <NavLink to="/about">
-            <Button variant="ghost">Sobre</Button>
-          </NavLink>
+          <Link href="https://github.com/H3rmel/country-atlas" isExternal>
+            <Button variant="ghost">GitHub</Button>
+          </Link>
           <ToggleColorMode />
         </Stack>
         {/* For Mobile */}
@@ -80,9 +88,9 @@ export const Header = () => {
               <NavLink to="/">
                 <Button w="100%">Home</Button>
               </NavLink>
-              <NavLink to="/about">
-                <Button w="100%">Sobre</Button>
-              </NavLink>
+              <Link href="https://github.com/H3rmel/country-atlas" isExternal>
+                <Button variant="ghost">GitHub</Button>
+              </Link>
             </DrawerBody>
             <DrawerFooter>
               <ToggleColorMode />
