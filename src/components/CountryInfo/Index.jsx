@@ -94,8 +94,8 @@ export const CountryInfo = ({ country }) => {
             <Text as="strong">Moedas:</Text>{" "}
             {Object.values(country.currencies).map((currency, index) => {
               if (index === Object.values(country.currencies).length - 1)
-                return currency.name;
-              else return `${currency.name}, `;
+                return `${currency.name} (${currency.symbol})`;
+              else return `${currency.name} (${currency.symbol}), `;
             })}
           </ListItem>
           <ListItem>
