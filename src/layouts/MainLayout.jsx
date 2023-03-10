@@ -15,7 +15,7 @@ export const MainLayout = ({ children, pageTitle }) => {
   return (
     <Box w="full" h="100vh" overflowY="auto" bg={bg} color={color}>
       <Header />
-      <Box width="app" mx="auto" my="4">
+      <Box width="min(100% - 2rem, 75vw)" mx="auto" my="4">
         {/* Breadcrumbs here later */}
         {children}
       </Box>

@@ -1,24 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
-  Flex, Input,
+  Flex,
+  Input,
   InputGroup,
-  InputLeftElement, Select
+  InputLeftElement,
+  Select
 } from "@chakra-ui/react";
 
 import { MagnifyingGlass } from "phosphor-react";
 
 import { regions } from "@/config/regions.json";
 
-export const CountryForm = ({countries}) => {
+export const CountryForm = ({ countries, setFilter }) => {
   const [searchQuery, setSearchQuery] = useState({
     name: "",
     region: "",
   });
 
+  useEffect(() => {
+    handleFilter();
+  }, [searchQuery]);
+
+  const handleSearchQuery = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+
+    const updatedSearchQuery = {
+      ...searchQuery,
+      [name]: value,
+    };
+
+    setSearchQuery(updatedSearchQuery);
+  };
+
   const handleFilter = () => {
-    const 
-  }
+    const filteredCountries = countries.filter((country) => {
+      let countryName = country.name.common.toLowerCase();
+      let searchName = searchQuery.name.toLowerCase();
+
+      return countryName.includes(searchName);
+    });
+
+    setFilter(filteredCountries);
+  };
 
   return (
     <Flex
@@ -34,20 +59,17 @@ export const CountryForm = ({countries}) => {
         <Input
           type="text"
           placeholder="Pesquise por algum país..."
+          name="name"
           value={searchQuery.name}
-          onChange={(e) =>
-            setSearchQuery({ ...searchQuery, name: e.target.value })
-          }
+          onChange={(e) => handleSearchQuery(e)}
         />
       </InputGroup>
       <Select
-        placeholder="Filtrar por região"
+        name="region"
         size="lg"
         value={searchQuery.region}
         flexBasis={{ base: "40%", md: "25%" }}
-        onChange={(e) =>
-          setSearchQuery({ ...searchQuery, region: e.target.value })
-        }
+        onChange={(e) => handleSearchQuery(e)}
       >
         <option value="">Filtrar por região</option>
         {regions.map((region, index) => (

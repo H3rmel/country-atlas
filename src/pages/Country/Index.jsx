@@ -46,9 +46,10 @@ export const Country = () => {
     <MainLayout pageTitle={name}>
       <LoaderIf condition={loading}>
         <Button onClick={handleReturn}>
-          <ArrowLeft size={20} /> Voltar para Home
+          <ArrowLeft size={20} /> Voltar
         </Button>
         <Flex
+          w="full"
           flexDirection={{ base: "column", "2xl": "row" }}
           justifyContent="space-between"
           alignItems={{
@@ -57,12 +58,12 @@ export const Country = () => {
             lg: "flex-start",
             xl: "center",
           }}
-          mt={{ base: 4, md: 16}}
+          mt={{ base: 4, md: 16 }}
         >
           <Image
             src={country?.flags?.svg}
             alt={country?.flags?.alt}
-            w={{ lg: "100%", xl: "xl" }}
+            w={{ lg: "100%", xl: "2xl" }}
             borderRadius="2xl"
           />
           <CountryInfo country={country} />

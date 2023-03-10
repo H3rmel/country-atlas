@@ -1,10 +1,9 @@
 import { api } from "./api";
 
-export const getAllCountries = async (setData) => {
+export const getAllCountries = async () => {
   try {
     const response = await api.get("all/");
-
-    setData(response.data);
+    return response.data;
   } catch (error) {
     throw error;
   }

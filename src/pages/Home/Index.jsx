@@ -10,12 +10,19 @@ import { getAllCountries } from "@/services/countries";
 
 export const Home = () => {
   const [countries, setCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
 
   const toast = useToast();
 
   useEffect(() => {
+    returnAllCountries();
+  }, []);
+
+  const returnAllCountries = async () => {
     try {
-      getAllCountries(setCountries);
+      const response = await getAllCountries();
+
+      setCountries(response), setFilteredCountries(response);
     } catch (error) {
       toast({
         title: "Erro",
@@ -25,13 +32,14 @@ export const Home = () => {
         isClosable: true,
       });
     }
-  }, []);
+  };
 
+  console.log(filteredCountries);
   return (
     <MainLayout pageTitle="Home">
       <LoaderIf condition={countries.length === 0}>
-        <CountryForm />
-        <CountryList countries={countries} />
+        <CountryForm countries={countries} setFilter={setFilteredCountries} />
+        <CountryList countries={filteredCountries} />
       </LoaderIf>
     </MainLayout>
   );
