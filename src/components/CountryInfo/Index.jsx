@@ -4,6 +4,7 @@ import {
   Button,
   Code,
   Heading,
+  Link,
   List,
   ListItem,
   Stack,
@@ -12,8 +13,6 @@ import {
   Wrap,
   WrapItem
 } from "@chakra-ui/react";
-
-import { Link, redirect } from "react-router-dom";
 
 import { getCountriesByCodes } from "@/api/countries";
 
@@ -33,21 +32,6 @@ export const CountryInfo = ({ country }) => {
       const response = await getCountriesByCodes(country.borders);
 
       setBorderCountries(response);
-    } catch (error) {
-      toast({
-        title: "Erro",
-        description: error,
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-  };
-
-  const redirectToBorderCountry = (borderCountry) => {
-    try {
-      redirect(`/country/${borderCountry}`);
-      window.location.reload();
     } catch (error) {
       toast({
         title: "Erro",
@@ -113,10 +97,7 @@ export const CountryInfo = ({ country }) => {
         <Wrap>
           {borderCountries.map((borderCountry, index) => (
             <WrapItem key={index}>
-              <Link
-                to={`/country/${borderCountry}`}
-                onClick={() => redirectToBorderCountry(borderCountry)}
-              >
+              <Link href={`/country/${borderCountry}`} isExternal>
                 <Button variant="outline" size="sm">
                   {borderCountry}
                 </Button>
