@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { MainLayout } from "@/layouts/MainLayout";
+import { MainLayout } from "@/layouts";
 
 import { CountryInfo, LoaderIf } from "@/components";
 
@@ -8,9 +8,11 @@ import { Button, Flex, Image, useToast } from "@chakra-ui/react";
 
 import { useNavigate, useParams } from "react-router-dom";
 
-import { getSpecificCountryByName } from "@/services/countries";
+import { getSpecificCountryByName } from "@/api/countries";
 
 import { ArrowLeft } from "phosphor-react";
+
+import { flexSx, imgSx } from "./style";
 
 export const Country = () => {
   const [country, setCountry] = useState({});
@@ -22,12 +24,13 @@ export const Country = () => {
   const toast = useToast();
 
   useEffect(() => {
-    getCountry();
+    returnCountry();
   }, []);
 
-  const getCountry = async () => {
+  const returnCountry = async () => {
     try {
       const response = await getSpecificCountryByName(name);
+
       setCountry(response), setLoading(false);
     } catch (error) {
       toast({
@@ -48,23 +51,11 @@ export const Country = () => {
         <Button onClick={handleReturn}>
           <ArrowLeft size={20} /> Voltar
         </Button>
-        <Flex
-          w="full"
-          flexDirection={{ base: "column", "2xl": "row" }}
-          justifyContent="space-between"
-          alignItems={{
-            base: "flex-start",
-            md: "center",
-            lg: "flex-start",
-            xl: "center",
-          }}
-          mt={{ base: 4, md: 16 }}
-        >
+        <Flex sx={flexSx}>
           <Image
             src={country?.flags?.svg}
             alt={country?.flags?.alt}
-            w={{ lg: "100%", xl: "2xl" }}
-            borderRadius="2xl"
+            sx={imgSx}
           />
           <CountryInfo country={country} />
         </Flex>

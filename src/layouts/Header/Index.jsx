@@ -24,6 +24,8 @@ import {
 } from "@chakra-ui/react";
 import { List } from "phosphor-react";
 
+import { boxSx, drawerSx, flexSx, imgSx, mobileSx, stackSx } from "./style";
+
 export const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
@@ -32,30 +34,11 @@ export const Header = () => {
   const bg = useColorModeValue("white", "gray.900");
   const logo = useColorModeValue("/logo-light.svg", "/logo-dark.svg");
   return (
-    <Box
-      bg={bg}
-      color={color}
-      shadow="base"
-      position="sticky"
-      top={0}
-      zIndex={999}
-    >
-      <Flex
-        width={{ base: "full", md: "app" }}
-        py="4"
-        px={{ base: 4, md: 0 }}
-        mx="auto"
-        justifyContent={{ base: "end", md: "space-between" }}
-        alignItems="center"
-      >
-        <Image
-          src={logo}
-          width="256px"
-          display={{ base: "none", md: "block" }}
-          alt="Webpage logo"
-        />
+    <Box bg={bg} color={color} sx={boxSx}>
+      <Flex sx={flexSx}>
+        <Image src={logo} sx={imgSx} alt="Webpage logo" />
         {/* For Desktop */}
-        <Stack direction="row" display={{ base: "none", md: "flex" }}>
+        <Stack direction="row" sx={stackSx}>
           <NavLink to="/">
             <Button variant="ghost">Home</Button>
           </NavLink>
@@ -66,7 +49,7 @@ export const Header = () => {
         </Stack>
         {/* For Mobile */}
         <IconButton
-          display={{ base: "inline-flex", md: "none" }}
+          sx={mobileSx}
           aria-label="Drawer opener"
           icon={<List size={24} />}
           onClick={onOpen}
@@ -84,15 +67,15 @@ export const Header = () => {
             <DrawerHeader>
               <Image src={logo} width="128px" alt="Webpage logo" />
             </DrawerHeader>
-            <DrawerBody display="flex" flexDirection="column" gap={2}>
+            <DrawerBody sx={drawerSx}>
               <NavLink to="/">
                 <Button w="100%">Home</Button>
               </NavLink>
+            </DrawerBody>
+            <DrawerFooter>
               <Link href="https://github.com/H3rmel/country-atlas" isExternal>
                 <Button variant="ghost">GitHub</Button>
               </Link>
-            </DrawerBody>
-            <DrawerFooter>
               <ToggleColorMode />
             </DrawerFooter>
           </DrawerContent>

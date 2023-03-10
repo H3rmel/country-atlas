@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-import { MainLayout } from "@/layouts/MainLayout";
+import { MainLayout } from "@/layouts";
 
-import { CountryForm, CountryList, LoaderIf } from "@/components";
+import { CountryForm, CountryGrid, LoaderIf } from "@/components";
 
 import { useToast } from "@chakra-ui/react";
 
-import { getAllCountries } from "@/services/countries";
+import { getAllCountries } from "@/api/countries";
 
 export const Home = () => {
   const [countries, setCountries] = useState([]);
@@ -38,7 +38,7 @@ export const Home = () => {
     <MainLayout pageTitle="Home">
       <LoaderIf condition={countries.length === 0}>
         <CountryForm countries={countries} setFilter={setFilteredCountries} />
-        <CountryList countries={filteredCountries} />
+        <CountryGrid countries={filteredCountries} />
       </LoaderIf>
     </MainLayout>
   );

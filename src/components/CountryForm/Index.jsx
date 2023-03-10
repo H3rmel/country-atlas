@@ -10,7 +10,11 @@ import {
 
 import { MagnifyingGlass } from "phosphor-react";
 
-import { regions } from "@/config/regions.json";
+import { regions } from "@/constants/regions.json";
+
+import { flexSx } from "./style";
+
+import { filterCountries } from "@/services/filterCountries";
 
 export const CountryForm = ({ countries, setFilter }) => {
   const [searchQuery, setSearchQuery] = useState({
@@ -19,7 +23,7 @@ export const CountryForm = ({ countries, setFilter }) => {
   });
 
   useEffect(() => {
-    handleFilter();
+    setFilter(filterCountries(countries, searchQuery));
   }, [searchQuery]);
 
   const handleSearchQuery = (e) => {
@@ -34,33 +38,8 @@ export const CountryForm = ({ countries, setFilter }) => {
     setSearchQuery(updatedSearchQuery);
   };
 
-  const handleFilter = () => {
-    const filteredCountries = countries.filter((country) => {
-      if (
-        !country.region.toLowerCase().includes(searchQuery.region.toLowerCase())
-      )
-        return;
-
-      if (
-        !country.name.common
-          .toLowerCase()
-          .includes(searchQuery.name.toLowerCase())
-      )
-        return;
-
-      return country;
-    });
-
-    setFilter(filteredCountries);
-  };
-
   return (
-    <Flex
-      alignItems="center"
-      flexDirection={{ base: "column", md: "row" }}
-      gap={4}
-      mb={4}
-    >
+    <Flex sx={flexSx}>
       <InputGroup size="lg" flexBasis={{ base: "60%", md: "75%" }}>
         <InputLeftElement>
           <MagnifyingGlass size={24} />

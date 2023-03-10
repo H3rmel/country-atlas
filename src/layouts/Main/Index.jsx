@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 
-import { Header } from "./Header";
+import { Header } from "../Header";
 
 import { Box, useColorModeValue } from "@chakra-ui/react";
+
+import { appSx, boxSx } from "./style";
 
 export const MainLayout = ({ children, pageTitle }) => {
   const color = useColorModeValue("gray.800", "gray.200");
@@ -13,9 +15,9 @@ export const MainLayout = ({ children, pageTitle }) => {
   }, []);
 
   return (
-    <Box w="full" h="100vh" overflowY="auto" bg={bg} color={color}>
+    <Box sx={appSx} bg={bg} color={color}>
       <Header />
-      <Box width="min(100% - 2rem, 75vw)" mx="auto" my="4">
+      <Box sx={boxSx}>
         {/* Breadcrumbs here later */}
         {children}
       </Box>

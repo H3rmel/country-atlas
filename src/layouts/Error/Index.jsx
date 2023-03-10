@@ -13,6 +13,8 @@ import {
 
 import { ArrowCounterClockwise } from "phosphor-react";
 
+import { centerSx } from "./style";
+
 export const ErrorLayout = ({ children, pageTitle }) => {
   const color = useColorModeValue("gray.800", "gray.200");
 
@@ -23,8 +25,9 @@ export const ErrorLayout = ({ children, pageTitle }) => {
   });
 
   const handleReturn = () => navigate("/", { replace: true });
+
   return (
-    <Center w="app" h="100vh" mx="auto" bg={!color} color={color}>
+    <Center sx={centerSx} bg={!color} color={color}>
       <Stack direction="column" align="center">
         {children}
         <Stack direction="row">
