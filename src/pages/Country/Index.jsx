@@ -30,8 +30,8 @@ export const Country = () => {
   const returnCountry = async () => {
     try {
       const response = await getSpecificCountryByName(name);
-
-      setCountry(response), setLoading(false);
+      setCountry(response);
+      setLoading(false);
     } catch (error) {
       toast({
         title: "Erro",

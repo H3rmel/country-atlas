@@ -28,6 +28,8 @@ export const CountryInfo = ({ country }) => {
   }, []);
 
   const returnBorderCountries = async () => {
+    if (country.borders === undefined) return;
+
     try {
       const response = await getCountriesByCodes(country.borders);
 
@@ -68,11 +70,12 @@ export const CountryInfo = ({ country }) => {
         </List>
         <List spacing={4}>
           <ListItem>
-            <Text as="strong">Capital:</Text> {country?.capital}
+            <Text as="strong">Capital:</Text>{" "}
+            {country?.capital.map((capital) => capital)}
           </ListItem>
           <ListItem>
             <Text as="strong">Top Level Domain:</Text>{" "}
-            <Code>{country?.tld}</Code>
+            <Code>{country?.tld.map((tld) => tld)}</Code>
           </ListItem>
           <ListItem>
             <Text as="strong">Moedas:</Text>{" "}
@@ -92,20 +95,22 @@ export const CountryInfo = ({ country }) => {
           </ListItem>
         </List>
       </Stack>
-      <Stack>
-        <Text as="strong">Países de borda:</Text>
-        <Wrap>
-          {borderCountries.map((borderCountry, index) => (
-            <WrapItem key={index}>
-              <Link href={`/country/${borderCountry}`} isExternal>
-                <Button variant="outline" size="sm">
-                  {borderCountry}
-                </Button>
-              </Link>
-            </WrapItem>
-          ))}
-        </Wrap>
-      </Stack>
+      {borderCountries.length > 1 && (
+        <Stack>
+          <Text as="strong">Países de borda:</Text>
+          <Wrap>
+            {borderCountries.map((borderCountry, index) => (
+              <WrapItem key={index}>
+                <Link href={`/country/${borderCountry}`} isExternal>
+                  <Button variant="outline" size="sm">
+                    {borderCountry}
+                  </Button>
+                </Link>
+              </WrapItem>
+            ))}
+          </Wrap>
+        </Stack>
+      )}
     </Stack>
   );
 };
