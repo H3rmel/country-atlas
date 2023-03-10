@@ -1,4 +1,4 @@
-import { ErrorLayout } from "@/layouts";
+import { ErrorLayout } from "@/layouts/Error/Index";
 
 import { Card, CardBody, Code, Heading } from "@chakra-ui/react";
 

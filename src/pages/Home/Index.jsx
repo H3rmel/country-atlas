@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { CountryForm, CountryGrid, LoaderIf } from "@/components";
 
-import { MainLayout } from "@/layouts";
+import { MainLayout } from "@/layouts/Main/Index";
 
 import { useToast } from "@chakra-ui/react";
 

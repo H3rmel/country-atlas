@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { MainLayout } from "@/layouts";
+import { MainLayout } from "@/layouts/Main/Index";
 
 import { CountryInfo, LoaderIf } from "@/components";
 
