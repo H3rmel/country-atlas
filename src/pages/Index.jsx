@@ -1,5 +1,5 @@
-export { Country } from "./Country";
-export { Error } from "./Error";
-export { Home } from "./Home";
-export { NotFound } from "./NotFound";
+export { Country } from "./Country/Index";
+export { Error } from "./Error/Index";
+export { Home } from "./Home/Index";
+export { NotFound } from "./NotFound/Index";
 
