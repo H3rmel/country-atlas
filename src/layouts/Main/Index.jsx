@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Header } from "../Header";
+import { Header } from "../Header/Index";
 
 import { Box, useColorModeValue } from "@chakra-ui/react";
 

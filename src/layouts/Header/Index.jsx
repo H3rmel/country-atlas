@@ -22,6 +22,7 @@ import {
   useColorModeValue,
   useDisclosure
 } from "@chakra-ui/react";
+
 import { List } from "phosphor-react";
 
 import { boxSx, drawerSx, flexSx, imgSx, mobileSx, stackSx } from "./style";
