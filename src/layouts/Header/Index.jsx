@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { ToggleColorMode } from "@/components";
+import { ToggleColorMode } from "@/components/Index";
 
 import { NavLink } from "react-router-dom";
 
