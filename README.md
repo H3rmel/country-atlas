@@ -31,24 +31,24 @@ Requisitos:
 Para rodar o projeto é bem simples, primeiro você deve clona-lo:
 
 ```
-  git clone https://github.com/H3rmel/country-atlas.git
+git clone https://github.com/H3rmel/country-atlas.git
 ```
 
 Após isso, dentro da pasta do repositório execute os seguintes comandos:
 
 ```
-  npm i
-  npm run dev
+npm i
+npm run dev
 ```
 
 Se tudo estiver correto, você verá uma mensagem como esta:
 
 ```
-  VITE v4.1.4  ready in 397 ms
+VITE v4.1.4  ready in 397 ms
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: http://10.1.1.182:5173/
-  ➜  press h to show help
+➜  Local:   http://localhost:5173/
+➜  Network: http://10.1.1.182:5173/
+➜  press h to show help
 ```
 
 Pronto! Só rodar o projeto e ser feliz agora. 😉
