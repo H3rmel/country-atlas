@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import "@fontsource/sora";
@@ -13,9 +12,7 @@ import { RouterProvider } from "react-router-dom";
 const app = createRoot(document.getElementById("app"));
 
 app.render(
-  <StrictMode>
-    <ChakraProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ChakraProvider>
-  </StrictMode>
+  <ChakraProvider theme={theme}>
+    <RouterProvider router={router} />
+  </ChakraProvider>
 );
