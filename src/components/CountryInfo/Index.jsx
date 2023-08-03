@@ -95,7 +95,7 @@ export const CountryInfo = ({ country }) => {
           </ListItem>
         </List>
       </Stack>
-      {borderCountries.length > 1 && (
+      {borderCountries.length > 0 && (
         <Stack>
           <Text as="strong">Países de borda:</Text>
           <Wrap>
